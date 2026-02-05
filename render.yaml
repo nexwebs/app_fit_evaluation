@@ -1,0 +1,91 @@
+services:
+  - type: web
+    name: server-fit-evaluation
+    runtime: python
+    region: oregon
+    plan: free
+    branch: main
+    rootDir: app
+    buildCommand: uv sync --frozen && uv cache prune --ci
+    startCommand: gunicorn main:app -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
+    envVars:
+      - key: APP_ENV
+        sync: false
+      - key: APP_NAME
+        value: Agent AI FitEvaluator
+      - key: LOG_LEVEL
+        sync: false
+      - key: DOMAIN
+        sync: false
+      - key: USE_SSL
+        sync: false
+      - key: POSTGRES_USER
+        value: postgres
+      - key: POSTGRES_PASSWORD
+        sync: false
+      - key: POSTGRES_DB
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4o
+      - key: EMBEDDING_MODEL
+        value: text-embedding-3-small
+      - key: SECRET_KEY
+        sync: false
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: 30
+      - key: RATE_LIMIT_PUBLIC_RPM
+        sync: false
+      - key: RATE_LIMIT_PUBLIC_RPH
+        sync: false
+      - key: RATE_LIMIT_AUTH_RPM
+        sync: false
+      - key: RATE_LIMIT_AUTH_RPH
+        sync: false
+      - key: RATE_LIMIT_WS_RPM
+        value: 30
+      - key: RATE_LIMIT_WS_RPH
+        sync: false
+      - key: CORS_ORIGIN_1
+        value: http://localhost:4321
+      - key: CORS_ORIGIN_2
+        sync: false
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_PORT
+        sync: false
+      - key: SMTP_USER
+        value: clblommberg@gmail.com
+      - key: SMTP_PASSWORD
+        sync: false
+      - key: EMAIL_VENTAS
+        sync: false
+      - key: EMAIL_SOPORTE
+        sync: false
+      - key: R2_ENDPOINT_URL
+        value: https://71882c32b10ba96776dfc66cdcf24298.r2.cloudflarestorage.com
+      - key: R2_ACCESS_KEY_ID
+        sync: false
+      - key: R2_SECRET_ACCESS_KEY
+        sync: false
+      - key: NOMBRE_EMPRESA
+        sync: false
+      - key: SITIO_WEB
+        sync: false
+      - key: TELEFONO_SOPORTE
+        sync: false
+      - key: GOOGLE_CLIENT_CONFIG
+        sync: false
+      - key: DB_POOL_SIZE
+        sync: false
+      - key: DB_MAX_OVERFLOW
+        sync: false
+      - key: MAX_CONCURRENT_REQUESTS
+        value: 2
+      - key: MAX_WEBSOCKET_CONNECTIONS
+        sync: false
+      - key: EMBEDDING_CACHE_SIZE
+        sync: false
