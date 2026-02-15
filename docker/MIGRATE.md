@@ -19,5 +19,7 @@ uv run uvicorn app.main:app --reload --port 8000
 
 
 psql -U postgres -d fitdb_evaluation_v2 -f docker/backup.sql
+
+uv run gunicorn app.main:app -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
 ```
 

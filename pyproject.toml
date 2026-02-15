@@ -37,5 +37,6 @@ url = "https://pypi.org/simple"
 default = true
 
 [[tool.uv.index]]
+name = "pytorch-cpu"
 url = "https://download.pytorch.org/whl/cpu"
-explicit = true  # ← Critical: only use this index for packages that explicitly request it
+explicit = true
