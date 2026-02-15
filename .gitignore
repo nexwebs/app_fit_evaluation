@@ -12,3 +12,7 @@ app/client_service.json
 
 FLUJO.md
 .env
+
+RENDER.md
+
+.ruff_cache
