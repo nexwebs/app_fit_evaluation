@@ -89,3 +89,16 @@ services:
         sync: false
       - key: EMBEDDING_CACHE_SIZE
         sync: false
+
+  - type: web
+    name: client-fit-evaluation
+    runtime: node
+    region: oregon
+    plan: free
+    branch: main
+    rootDir: client
+    buildCommand: pnpm install && pnpm build
+    startCommand: pnpm preview --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: VITE_API_URL
+        value: https://server-fit-evaluation.onrender.com
