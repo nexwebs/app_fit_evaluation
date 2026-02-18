@@ -16,3 +16,4 @@ FLUJO.md
 RENDER.md
 
 .ruff_cache
+docker/
